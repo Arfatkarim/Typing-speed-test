@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 10%;
+        }
+        .test-text {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+        input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Typing Speed Test</h1>
+    <p class="test-text">Type this sentence: <strong>The quick brown fox jumps over the lazy dog.</strong></p>
+    <input type="text" id="inputField" placeholder="Start typing..." />
+    <div id="result"></div>
+
+    <script>
+        const testText = 'The quick brown fox jumps over the lazy dog.';
+        const inputField = document.getElementById('inputField');
+        let startTime;
+
+        inputField.addEventListener('focus', () => {
+            startTime = new Date();
+        });
+
+        inputField.addEventListener('input', () => {
+            if (inputField.value === testText) {
+                const endTime = new Date();
+                const timeTaken = (endTime - startTime) / 1000;
+                document.getElementById('result').textContent = `You completed the test in ${timeTaken} seconds.`;
+            }
+        });
+    </script>
+</body>
+</html>
